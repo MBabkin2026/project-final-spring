@@ -1,20 +1,29 @@
 package org.example.projectfinalspring.entities;
 
-import java.time.LocalDateTime;
-import java.util.Date;
+import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "tasks")
 public class Task {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
 
     private String description;
 
+    @Column(nullable = false)
     private LocalDateTime deadline;
 
+    @Column(nullable = false)
     private String status;
 
+    @ManyToOne()
     private User user;
 
     public Task() {
