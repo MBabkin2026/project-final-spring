@@ -2,6 +2,7 @@ package org.example.projectfinalspring.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,24 +13,26 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String title;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
-    private LocalDateTime deadline;
+    private LocalDate deadline;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String status;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public Task() {
     }
 
-    public Task(Long id, String title, String description, LocalDateTime deadline, String status, User user) {
+    public Task(Long id, String title, String description, LocalDate deadline, String status, User user) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -62,11 +65,11 @@ public class Task {
         this.description = description;
     }
 
-    public LocalDateTime getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(LocalDateTime deadline) {
+    public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
 
