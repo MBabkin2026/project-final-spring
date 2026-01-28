@@ -12,8 +12,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
   sql:
     init:
-      mode: always
-      schema-locations: classpath:schema.sql
-      data-locations: classpath:data.sql
+      debug: true
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:data/data.sql
