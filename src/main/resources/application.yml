@@ -18,3 +18,8 @@ spring:
       debug: true
       schema-locations: classpath:db/schema.sql
       data-locations: classpath:data/data.sql
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
