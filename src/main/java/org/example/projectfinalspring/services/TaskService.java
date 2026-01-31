@@ -11,10 +11,13 @@ import java.util.Optional;
 @Service
 public class TaskService {
 
-    private final TaskRepository taskRepository;
+    private TaskRepository taskRepository;
 
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
+    }
+
+    public TaskService() {
     }
 
     @Transactional
